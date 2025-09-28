@@ -188,7 +188,7 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(found.count(), count)
         for product in found:
             self.assertEqual(product.category, category)
-    
+
     def test_update_with_no_id(self):
         """It should fail when update with no ID"""
         product = ProductFactory()
@@ -207,14 +207,14 @@ class TestProductModel(unittest.TestCase):
             product.price = price
             product.create()
         products = Product.find_by_price(price)
-        for p in products:
-            self.assertEqual(p.price, Decimal(price))
+        for product_item in products:
+            self.assertEqual(product_item.price, Decimal(price))
 
     def test_error_deserilize_product_with_bad_data(self):
         """It should raise error when deserialize Product with bad data"""
 
         product = ProductFactory()
-        
+
         # Non boolean available attribute
         bad_data = {
             "name": "test",
